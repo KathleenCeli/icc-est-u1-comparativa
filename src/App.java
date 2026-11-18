@@ -13,7 +13,6 @@ public class App {
 
         System.out.println("Resultado: " + benGenList);
 
-
         //long nanoTime = System.nanoTime();
         //long currentTimeMillis = System.currentTimeMillis();
         //System.out.println("Nano time: " + nanoTime);
