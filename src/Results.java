@@ -38,9 +38,9 @@ public class Results {
 
     @Override
     public String toString() {  
-        long segundos = duracion / 1000000000;
-        return "Results" +
-                "funcionNombre: " + funcionNombre + ", duracion: " + segundos + " s, sample: " 
+        double segundos = duracion / 1_000_000.0;
+        return " Results" +
+                ", funcionNombre: " + funcionNombre + ", duracion: " + segundos + " ms, sample: " 
                 + sample;
     }
 

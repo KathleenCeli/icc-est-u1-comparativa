@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -30,51 +31,82 @@ public class App {
         int[] lista2c3 = lista2.clone();
         int[] lista3c3 = lista3.clone();
 
-        int[] lista1c4 = lista1.clone();
-        int[] lista2c4 = lista2.clone();
-        int[] lista3c4 = lista3.clone();
+        Integer[] objLista1 = new Integer[lista1.length];
+        for (int i = 0; i < lista1.length; i++) {
+            objLista1[i] = lista1[i]; //autoboxing
+        }
+
+        Integer[] objLista2 = new Integer[lista2.length];
+        for (int i = 0; i < lista2.length; i++) {
+            objLista2[i] = lista2[i];
+        }
+
+        Integer[] objLista3 = new Integer[lista3.length];
+        for (int i = 0; i < lista3.length; i++) {
+            objLista3[i] = lista3[i];
+        }
+
+        Integer[] lista1c4 = objLista1.clone();
+        Integer[] lista2c4 = objLista2.clone();
+        Integer[] lista3c4 = objLista3.clone();
+
 
         //Bubble sort
         Results resultaM1S1 = benchmark.medir(
                             () -> m.sortBubble(lista1c1),"bubble sort", "10.000");
-        System.out.println("Resultado: " + resultaM1S1);
+        System.out.println("1. Resultado: " + resultaM1S1);
 
         Results resultaM1S2 = benchmark.medir(
                             () -> m.sortBubble(lista2c1),"bubble sort", "50.000");
-        System.out.println("Resultado: " + resultaM1S2);
+        System.out.println("2. Resultado: " + resultaM1S2);
 
         Results resultaM1S3 = benchmark.medir(
                             () -> m.sortBubble(lista3c1),"bubble sort", "100.000");  
-        System.out.println("Resultado: " + resultaM1S3);                  
+        System.out.println("3. Resultado: " + resultaM1S3);                  
+
 
         //Investigación: Merge Sort
         Results resultaM2S1 = benchmark.medir(
                             () -> mS.MergeSort(lista1c2), "Merge Sort", "10.000" );
-        System.out.println("Resultado:" + resultaM2S1);
+        System.out.println("4. Resultado:" + resultaM2S1);
 
         Results resultaM2S2 = benchmark.medir(
                             ()-> mS.MergeSort(lista2c2), "Merge Sort", "50.000" );
-        System.out.println("Resultado:" + resultaM2S1);
+        System.out.println("5. Resultado:" + resultaM2S2);
 
         Results resultaM2S3 = benchmark.medir(
                             ()-> mS.MergeSort(lista3c2), "Merge Sort", "100.000" );
-        System.out.println("Resultado:" + resultaM2S3);
+        System.out.println("6. Resultado:" + resultaM2S3);
+
 
         //Arrays
         Results resultaM3S1 = benchmark.medir(
                             ()-> Arrays.sort(lista1c3), "Arrays", "10.000" );
-        System.out.println("Resultado:" + resultaM3S1);
+        System.out.println("7. Resultado:" + resultaM3S1);
 
         Results resultaM3S2 = benchmark.medir(
                             ()-> Arrays.sort(lista2c3), "Arrays", "50.000" );
-        System.out.println("Resultado:" + resultaM3S2);
+        System.out.println("8. Resultado:" + resultaM3S2);
         
         Results resultaM3S3 = benchmark.medir(
-                            ()-> Arrays.sort(lista3c3), "Arrays", "10.000" );
-        System.out.println("Resultado:" + resultaM3S3);
+                            ()-> Arrays.sort(lista3c3), "Arrays", "100.000" );
+        System.out.println("9. Resultado:" + resultaM3S3);
         
         //Arrays.sort con Comparator
+        Results resultaM4S1 = benchmark.medir(
+                            ()-> Arrays.sort(objLista1, (a, b) -> Integer.compare(a, b)),
+                             "Arrays. sort Comparator ", "10.000" );
+        System.out.println("10. Resultado:" + resultaM4S1);
         
+        Results resultaM4S2 = benchmark.medir(
+                            ()-> Arrays.sort(objLista2, (a, b) -> Integer.compare(a, b)),
+                             "Arrays. sort Comparator ", "50.000" );
+        System.out.println("11. Resultado:" + resultaM4S2);
+
+        Results resultaM4S3 = benchmark.medir(
+                            ()-> Arrays.sort(objLista3, (a, b) -> Integer.compare(a, b)),
+                             "Arrays. sort Comparator ", "100.000" );
+        System.out.println("12. Resultado:" + resultaM4S3);
         
 
 
